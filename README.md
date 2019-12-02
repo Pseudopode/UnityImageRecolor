@@ -3,7 +3,7 @@
 # Quick’n’dirty Unity ImageRecolor Demo V1.0
 
 QnDImageRecolor is a demo of runtime system to recolor part of the image, based on a provided Black&White mask.
-It's done with a shader, with only the "bauty shot" of the 3D render, and the mask from that beauty shot, where the white part of the mask indicates what part must be recolored.
+It's done with a shader, with only the "beauty shot" of the 3D render, and the mask from that beauty shot, where the white part of the mask indicates what part must be recolored.
 
 
 ## System Requirements
