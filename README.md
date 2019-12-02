@@ -19,6 +19,7 @@ A folder with a with example is also provided in **'Example Images'**.
 The goal of this app was to showcase a quick procedure to recolor furnitures or part of furnitures in realtime, without recalculation.
 No 3D scene or 3D model is needed (and there is none in the Unity project), only pair of images.
 For each render (each 'beauty shot') ![Image001](Documentation/rug_01.png ""), an associated image mask (with the same name as the beauty shot, with '_mask' as suffix) must be provided ![Image002](Documentation/rug_01_mask.png "").
+
 Example: blabla_diffuse.png must be associated with blabla_diffuse_mask.png
 
 Since the shader is realtime, the recoloring can also be realtime (if the recoloring would be done via CPU and pixel access in memory, that wouldn't be possible).
