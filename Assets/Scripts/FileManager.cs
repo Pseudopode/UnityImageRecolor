@@ -100,17 +100,8 @@ public class FileManager : MonoBehaviour
 
     public void openImage()
     {
-        // Open file
-        //var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "", false);
-
-        // Open file async
-       // StandaloneFileBrowser.OpenFilePanelAsync("Open File", "", "", false, (string[] paths) => {  });
-
-        // Open file with filter
         var extensions = new [] {
             new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
-            /*new ExtensionFilter("Sound Files", "mp3", "wav" ),
-            new ExtensionFilter("All Files", "*" ),*/
         };
         var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, true);
 
@@ -126,14 +117,21 @@ public class FileManager : MonoBehaviour
     private void setImageinGUI()
     {
         imageCanvas.texture = openedImage;
-        /*imageCanvas.width = openedImage.width;
-        imageCanvas.height = openedImage.height;*/
-        float width = openedImage.width;
-        float height = openedImage.height;
+        float imgWidth = openedImage.width;
+        float imgHeight = openedImage.height;
         float screenWidth = Screen.width;
-        imageCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2( screenWidth, height*width/screenWidth);
+        float screenHeight = Screen.height;
+        Debug.Log("Loaded image resolution is: " + imgWidth + " x " + imgHeight);
+        Debug.Log("Screen resolution is: " + screenWidth + " x " + screenHeight);
 
-        RTT = new RenderTexture( (int) width, (int) height, 24 );
+        //float imgRatio = screenHeight * imgWidth / screenWidth;
+        float imgRatio = screenHeight / screenWidth;
+        Debug.Log("Image Ratio is: " + imgRatio);
+        Debug.Log("New size for image on screen is: " + screenWidth +" x " + imgRatio * imgHeight);
+
+        imageCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2( screenWidth, imgRatio * imgHeight);
+
+        RTT = new RenderTexture( (int)imgWidth, (int)imgHeight, 24 );
         RTTCam.targetTexture = RTT;
 
 

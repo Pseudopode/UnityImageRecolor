@@ -37,19 +37,16 @@
 
          float4 frag(vertexOutput input) : COLOR
          {
-            //return _NewColor;
-            //return tex2D(_MainTex, input.tex.xy);	
+			 //input texture file
             float4 inputColor = tex2D(_MainTex, input.tex.xy);
+			//input mask
             float4 maskVec = tex2D(_MaskTex, input.tex.xy);
 
-            /*float r = inputColor.x;
-            float g = inputColor.y;
-            float b = inputColor.z;*/
+            //mask gray value is equivalent to one of the mask channel (since R=G=B for the mask)
             float mask = maskVec.x;
 
+			//grayscale value of the input image. Average of the 3 channels. /!\ NOT REALISTIC!
             float grayVal = (inputColor.x + inputColor.y + inputColor.z)/3.0;
-
-            float4 grayVec = float4(grayVal, grayVal, grayVal, 1.0);
 
             float beautyMinusProductR = inputColor.x * (1.0 - mask);
             float beautyMinusProductG = inputColor.y * (1.0 - mask);

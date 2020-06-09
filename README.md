@@ -1,6 +1,17 @@
-![Shader runtime Recolor Example](Documentation/example.png "")
+![Shader runtime Recolor Example](./Documentation/example.png "")
 
-# Quick’n’dirty Unity ImageRecolor Demo V1.0
+# Quick’n’dirty Unity ImageRecolor Demo V1.1
+
+## --
+## Update V1.1
+A second 'recolor' shader is provided (appropriately named 'Recolor2'...). It's goal is to provide a color injection mode similar to the ones available in Photoshop. The 'BlendColor' is used. This mode only inject the color and doesn't change the Luminosity of the color.
+
+The code is from https://mouaif.wordpress.com/2009/01/05/photoshop-math-with-glsl-shaders/
+
+If this mode is planned to be used, a separate interaction should be offered to the user, that let him change the luminosity and/or gamme of the color, with the appropriate slider displayed onscreen.
+
+The ratio of the loaded image is now fixed and doesn't break the UI.
+## --
 
 QnDImageRecolor is a demo of runtime system to recolor part of the image, based on a provided Black&White mask.
 It's done with a shader, with only the "beauty shot" of the 3D render, and the mask from that beauty shot, where the white part of the mask indicates what part must be recolored.
